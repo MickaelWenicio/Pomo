@@ -5,9 +5,13 @@ import Button from '../Button/Button';
 
 const MainComponent = () => {
     const [selectedBtn, setSelectedBtn] = useState('first');
+    const [pomodoro, setPomodoro] = useState<number>(25)
 
     const handleButtonClick = (buttonType:string) => {
         setSelectedBtn(buttonType);
+        if(buttonType == 'first'){setPomodoro(25)}
+        if(buttonType == 'second'){setPomodoro(5)}
+        if(buttonType == 'third'){setPomodoro(10)}
     };
 
     return (
@@ -32,7 +36,7 @@ const MainComponent = () => {
                     Descanso Longo
                 </button>
             </div>
-            <Timer/>
+            <Timer minutes={pomodoro} />
             <Button/>
         </Container>
     );

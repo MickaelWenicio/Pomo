@@ -1,11 +1,15 @@
 import Container from './Style'
 
-const Timer = () => {
+interface TimerProps {
+  minutes:number;
+}
+
+const Timer = ({minutes}: TimerProps) => {
   return (
     <Container>
         <div>
             <h1>
-                25:00
+            {minutes}:00
             </h1>
         </div>
     </Container>

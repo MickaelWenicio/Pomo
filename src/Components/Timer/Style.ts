@@ -9,10 +9,14 @@ const Container = styled.div`
     div{
         display: flex;
         align-items: center;
+        width: 340px;
+        justify-content: flex-start;
 
         h1{
             font-size: 8em;
             color: #423944;
+            text-align: center;
+            
         }
     }
 `

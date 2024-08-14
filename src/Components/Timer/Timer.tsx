@@ -3,12 +3,13 @@ import Container from './Style';
 
 interface TimerProps {
   minutes: number;
+  isRunning: boolean;
 }
 
-const Timer = ({ minutes }: TimerProps) => {
+const Timer = ({ minutes, isRunning }: TimerProps) => {
   const [seconds, setSeconds] = useState(0);
   const [totalMinutes, setTotalMinutes] = useState(minutes);
-  const [stopped, setStopped] = useState(false);
+  const [stopped, setStopped] = useState(!isRunning);
 
   const updateCounting = () => {
     if (totalMinutes === 0 && seconds === 0) {
@@ -26,6 +27,15 @@ const Timer = ({ minutes }: TimerProps) => {
 
     setSeconds((prevSeconds) => prevSeconds - 1);
   };
+
+  useEffect(()=>{
+    setTotalMinutes(minutes);
+    setSeconds(0);
+  },[minutes])
+
+  useEffect(()=>{
+    setStopped(!isRunning);
+  },[isRunning])
 
   useEffect(() => {
     if (stopped) return;
